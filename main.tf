@@ -11,7 +11,7 @@ resource "libvirt_pool" "ubuntu" {
 resource "libvirt_volume" "ubuntu-qcow2" {
   name = "ubuntu-qcow2"
   pool = libvirt_pool.ubuntu.name
-  source = var.ubuntu_18_img_url
+  source = var.ubuntu_21_img_url
   format = "qcow2"
 }
 
