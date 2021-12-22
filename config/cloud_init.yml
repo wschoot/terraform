@@ -1,0 +1,29 @@
+#cloud-config
+# vim: syntax=yaml
+# examples:
+# https://cloudinit.readthedocs.io/en/latest/topics/examples.html
+bootcmd:
+  - echo 192.168.0.1 gw.homedns.xyz >> /etc/hosts
+runcmd:
+ - [ ls, -l, / ]
+ - [ sh, -xc, "echo $(date) ': hello world!'" ]
+ssh_pwauth: true
+disable_root: false
+chpasswd:
+  list: |
+     root:password
+  expire: false
+users:
+  - name: ubuntu
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    home: /home/ubuntu
+    shell: /bin/bash
+    lock_passwd: false
+    ssh-authorized-keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCj2S79ZMw6MukBBk6YQFK+y3wnomg6cAfNYn9DjoLEWPzmtoPNw0EEgVIKyU+mqX2ijbbz8lcpJl24thby2vcnJ8/LKSb/fwnskp9b9V9gv5BlZzrwasgjbnCNQiKW2OCwYXyjNAskzWKN7m6q9N/6WETIod5V8EPT8Tij+UdmKIs0z/Vm6RvUzgfcnP+zfYSZHTXf1IkmdOqCNbGK2gHqKut7rdGSxrDXr1cjwCCkvlHJCOQ2jKdf+vDZctU1rlmPBLXdgAOMtM9y/Ei1EoAbw5VAOTz3Evrip6p6bHPrPYaqcJBZYK50OnO2yaw7jkPfkpmIkQwoT/ofcpH3EXEz5E6Rzm4o6O0bq2wseGhbY6wserI5aKwL0ODRMPmObV+2nb3/U7c5IXE0lfEtlYKtKbj0o3VWfL2Z5Okhr3qFxI/VrnHvCDiVLjh906aqT0w8Ijpm+n/MwKHcooMViDB2EgW5bQQCRe+BK/0klzM4GZ6roaLM8tGXGneu56EVRGk= deploys
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNzf2muhWD6usC+KizmE1ZTElr5OybNe+YMK6DlOu8S85yDn63un6iFOq2dnKhTIMKtwD31GdVcorzWBRaXR1Oj+Ypa5BueeFZnuCD5fUhou2chmW8gsmp1FYtSTcf4Ek5yynUwb3n1dPxQ3f0eW7fcY30jKhyFL7M0HvyGBnXBNcajNRtc7amKSPseg7tKdo5F64W8GdjzrJLyXzyzmD105G0S6Bc8QMgGaPdCoK/WJGAsan0v1XnSOzGRq/BZSrEhPgnIQcEDDSYG8Gwznz2Ex+y081Qn8nFi8NLr3XZwczB1i76wOfXL4I7A+ExPrbFU+qTNC/zRJSyEqwPxW9f wouter@dell
+
+
+final_message: "The system is finally up, after $UPTIME seconds"
+
