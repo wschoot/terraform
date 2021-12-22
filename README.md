@@ -7,6 +7,25 @@ terraform init
 terraform apply -auto-approve
 ```
 
+# Whatsmyip?!
+```bash
+$ terraform output ip
+"192.168.122.39"
+
+$ terraform output -json
+{
+  "ip": {
+    "sensitive": false,
+    "type": "string",
+    "value": "192.168.122.39"
+  },
+  "url": {
+    "sensitive": false,
+    "type": "string",
+    "value": "http://192.168.122.39"
+  }
+}
+```
 ## Troubleshooting
 ### Permission problems
 
