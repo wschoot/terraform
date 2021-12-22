@@ -1,6 +1,6 @@
 # terraform
 
-This is based on https://dev.to/ruanbekker/terraform-with-kvm-2d9e
+This is based on https://dev.to/ruanbekker/terraform-with-kvm-2d9e, modified to use newer [ubuntu 21.10](http://cloud-images.ubuntu.com/releases/21.10/release/) and removed the bastion hostconfiguration
 
 ```bash
 terraform init
