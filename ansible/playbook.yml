@@ -5,21 +5,8 @@
   become: yes
   become_user: root
   become_method: sudo
+  vars:
+    gitlab_edition: "gitlab-ee"
+  roles:
+    - { role: geerlingguy.gitlab }
   tasks:
-    - name: Install nginx
-      apt:
-        name: nginx
-        state: latest
-        update_cache: yes
-
-    - name: Enable service nginx and ensure it is not masked
-      systemd:
-        name: nginx
-        enabled: yes
-        masked: no
-
-    - name: ensure nginx is started
-      systemd:
-        state: started
-        name: nginx
-

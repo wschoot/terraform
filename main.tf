@@ -11,7 +11,7 @@ resource "libvirt_pool" "ubuntu" {
 resource "libvirt_volume" "ubuntu-qcow2" {
   name = "ubuntu-qcow2"
   pool = libvirt_pool.ubuntu.name
-  source = var.ubuntu_21_img_url
+  source = var.local_debian_10_img_url
   format = "qcow2"
 }
 
@@ -32,8 +32,8 @@ resource "libvirt_cloudinit_disk" "commoninit" {
 
 resource "libvirt_domain" "domain-ubuntu" {
   name   = var.vm_hostname
-  memory = "512"
-  vcpu   = 1
+  memory = "4096"
+  vcpu   = 2
 
   cloudinit = libvirt_cloudinit_disk.commoninit.id
 

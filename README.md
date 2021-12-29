@@ -3,6 +3,7 @@
 This is based on https://dev.to/ruanbekker/terraform-with-kvm-2d9e, modified to use newer [ubuntu 21.10](http://cloud-images.ubuntu.com/releases/21.10/release/) and removed the bastion hostconfiguration
 
 ```bash
+ansible-galaxy install -r requirements.yml --roles-path ansible/roles/
 terraform init
 terraform apply -auto-approve
 ```
